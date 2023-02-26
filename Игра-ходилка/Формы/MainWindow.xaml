@@ -1,0 +1,33 @@
+﻿<Window x:Class="Игра_ходилка.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Игра_ходилка"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="869" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <ScrollViewer x:Name="canvasGameScroll"  VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Padding="0">
+            <Canvas x:Name="canvasGame"  Margin="0" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True"/>
+        </ScrollViewer>
+        <Button x:Name="btnSave" Content="Сохранить" HorizontalAlignment="Left" Margin="10,5,0,5" Width="75" Click="btnSave_Click" Grid.Row="2"/>
+        <Button x:Name="btnLoad" Content="Загрузить" HorizontalAlignment="Left" Margin="90,5,0,5" Width="75" Click="btnLoad_Click" Grid.Row="2"/>
+        <Button x:Name="btnNewGame" Content="Новая игра" HorizontalAlignment="Left" Margin="170,5,0,5" Width="100" Click="btnNewGame_Click" Grid.Row="2"/>
+        <Button x:Name="btnNext" Content="Следующий ход" Margin="275,5,0,0" Grid.Row="2" VerticalAlignment="Top" Click="btnNext_Click" HorizontalAlignment="Left" Width="110"/>
+        <ListView x:Name="lvLog" Margin="10,5,10,10" ItemsSource="{Binding}" Grid.Row="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Дата сообщения" DisplayMemberBinding="{Binding [Дата сообщения]}"/>
+                    <GridViewColumn Header="Текст сообщения" Width="200" DisplayMemberBinding="{Binding Текст}"/>
+                    <GridViewColumn Header="Тип" DisplayMemberBinding="{Binding Тип}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
